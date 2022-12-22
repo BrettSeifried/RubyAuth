@@ -1,6 +1,7 @@
 # Require a file
 require_relative 'crudModule'
 
+include Crud
 # Alternate method
   # # If in another directory
     # $LOAD_PATH << "."

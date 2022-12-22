@@ -11,7 +11,12 @@ module Crud
 
 # Create a new user
   # see line 23 below for why we added self.
-  def self.create_hash_digest(password)
+  # def self.create_hash_digest(password)
+  # BCrypt::Password.create(password)
+  # end
+  
+  # Removed self. or Crud. because we used inclue Crud in class
+  def create_hash_digest(password)
   BCrypt::Password.create(password)
   end
 
@@ -19,7 +24,11 @@ module Crud
   # just a method without the Class. or Self.
 
 # Verify Password
-  def self.verify_hash_digest(password)
+  # def self.verify_hash_digest(password)
+  # BCrypt::Password.new(password)
+  # end
+  
+  def verify_hash_digest(password)
   BCrypt::Password.new(password)
   end
 
@@ -28,7 +37,8 @@ module Crud
     # Calling a method with it's class name
     # aka CLASS METHOD
       # can also use Crud.create_secure_users *********
-  def self.create_secure_users(list_of_users)
+  # def self.create_secure_users(list_of_users)
+  def create_secure_users(list_of_users)
   list_of_users.each do |user_record|
     # creates a hash of the password
     user_record[:password] = create_hash_digest(user_record[:password])
