@@ -14,4 +14,4 @@ users = [
   { username: "rue", password: "password5"},
 ]
 
-hashed_users = create_secure_users(users)
+hashed_users = Crud.create_secure_users(users)
