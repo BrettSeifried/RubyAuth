@@ -9,19 +9,22 @@ module Crud
   # can mix in a module into a class to use those methods from the MODULE in the class.
   # MODULES ARE TOOL KITS
 
+# Create a new user
   # see line 21 below for why we added self.
   def self.create_hash_digest(password)
   BCrypt::Password.create(password)
   end
 
+# Verify Password
   def self.verify_hash_digest(password)
   BCrypt::Password.new(password)
   end
 
-# Added self. after working on line 17 of main.rb
-  # Calling a method with it's class name
-  # aka CLASS METHOD
-    # can also use Crud.
+# Save to user to a file
+  # Added self. after working on line 17 of main.rb
+    # Calling a method with it's class name
+    # aka CLASS METHOD
+      # can also use Crud.
   def self.create_secure_users(list_of_users)
   list_of_users.each do |user_record|
     # creates a hash of the password
