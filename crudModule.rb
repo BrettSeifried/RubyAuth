@@ -10,10 +10,13 @@ module Crud
   # MODULES ARE TOOL KITS
 
 # Create a new user
-  # see line 21 below for why we added self.
+  # see line 23 below for why we added self.
   def self.create_hash_digest(password)
   BCrypt::Password.create(password)
   end
+
+# Instance Methods
+  # just a method without the Class. or Self.
 
 # Verify Password
   def self.verify_hash_digest(password)
@@ -24,7 +27,7 @@ module Crud
   # Added self. after working on line 17 of main.rb
     # Calling a method with it's class name
     # aka CLASS METHOD
-      # can also use Crud.
+      # can also use Crud.create_secure_users *********
   def self.create_secure_users(list_of_users)
   list_of_users.each do |user_record|
     # creates a hash of the password
