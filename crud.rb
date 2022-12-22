@@ -19,12 +19,6 @@ def verify_hash_digest(password)
   BCrypt::Password.new(password)
 end
 
-# # Tests the original example
-# new_password = create_hash_digest("password1")
-# puts new_password
-# # Below will comeback true if they match
-# puts new_password == "password1"
-
 def create_secure_users(list_of_users)
   list_of_users.each do |user_record|
     # creates a hash of the password
@@ -34,4 +28,24 @@ def create_secure_users(list_of_users)
   list_of_users
 end
 
-puts create_secure_users(users)
+# create new users array with hash passwords
+new_users = create_secure_users(users)
+puts new_users
+
+# Authenticate the Password
+
+def auth_user(username, password, list_of_users)
+  # loop through each record
+  list_of_users.each do |user_record|
+    # Compare if username from array AND hash password matches password hash from user input
+    if user_record[:username] == username && verify_hash_digest(user_record[:password]) == password
+      return user_record
+    end
+  end
+  "Crednetials were not correct"
+end
+
+# Test to see if auth_user works.
+puts auth_user("brettford", "password1", new_users)
+# # Test if wrong password is entered
+# puts auth_user("brettford", "password", new_users)
